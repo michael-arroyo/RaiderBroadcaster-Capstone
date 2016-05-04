@@ -10,4 +10,9 @@
 
     <string name="PREF_NAME" translatable="false">RaiderBroadcaster</string>
     <string name="PREF_STATE" translatable="false">state</string>
+
+    <string name="busTypePrompt">Select Bus Route</string>
+
+    <string name="google_app_id">optimum-mode-128816</string>
+
 </resources>

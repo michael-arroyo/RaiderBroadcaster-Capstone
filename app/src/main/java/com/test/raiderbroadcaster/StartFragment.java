@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,6 +31,7 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 public class StartFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private Button broadcastBtn;
     private EditText busnameInput;
+    private Spinner bustypeInput;
     private SharedPreferences sharedPrefs;
     private boolean mCanProceed = false;
     private GoogleApiClient mGoogleApiClient;
@@ -65,10 +67,14 @@ public class StartFragment extends Fragment implements GoogleApiClient.Connectio
         View view = inflater.inflate(R.layout.fragment_start, container, false);
         broadcastBtn = (Button) view.findViewById(R.id.btn_start_broadcast);
         busnameInput = (EditText) view.findViewById(R.id.input_busname);
+        bustypeInput = (Spinner) view.findViewById(R.id.input_bustype);
 
         String busName = sharedPrefs.getString(MainActivity.NAME_KEY, "");
         busnameInput.setText(busName);
         busnameInput.setSelection(busnameInput.getText().length());
+
+        String busType = sharedPrefs.getString(MainActivity.TYPE_KEY, "");
+
 
         broadcastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +93,7 @@ public class StartFragment extends Fragment implements GoogleApiClient.Connectio
     public void startBroadcast() {
         if (mCanProceed) {
             String busname = busnameInput.getText().toString();
+            String bustype = bustypeInput.getSelectedItem().toString();
             if (busname.equals("")) {
                 busnameInput.setError("Bus name must not be empty");
                 return;
@@ -95,10 +102,12 @@ public class StartFragment extends Fragment implements GoogleApiClient.Connectio
             // Save Bus ID
             SharedPreferences.Editor editor = sharedPrefs.edit();
             editor.putString(MainActivity.NAME_KEY, busname);
+            editor.putString(MainActivity.TYPE_KEY, bustype);
             editor.commit();
 
             Intent serviceIntent = new Intent(getActivity(), BroadcasterService.class);
             serviceIntent.putExtra("busname", busname);
+            serviceIntent.putExtra("bustype", bustype);
             getActivity().startService(serviceIntent);
 
             activity.goToStop();

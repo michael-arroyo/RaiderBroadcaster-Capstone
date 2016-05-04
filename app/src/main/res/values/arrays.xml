@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="busTypes">
+        <item>Red Raider</item>
+        <item>Double T</item>
+        <item>Masked Rider</item>
+        <item>Overton Park North</item>
+        <item>Overton Park South</item>
+        <item>Northwest</item>
+        <item>North 4th</item>
+        <item>North Indiana</item>
+        <item>Tech Terrace</item>
+        <item>West 4th Express</item>
+        <item>Nite Owl</item>
+    </string-array>
+</resources>

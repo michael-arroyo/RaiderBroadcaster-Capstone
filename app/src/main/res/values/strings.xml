@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Broadcaster</string>
     <string name="title_activity_maps">Map</string>
-    <string name="com.pubnub.publishKey" translatable="false">pub-c-3fb965b9-5c53-4d21-a955-46aa36211fee</string>
-    <string name="com.pubnub.secretKey" translatable="false">sec-c-MGFlNTg1M2UtYjlmYS00ZjY5LTg2NjctYTkwYzgxMWMyYmY2 </string>
-    <string name="com.pubnub.subscribeKey" translatable="false">sub-c-fd1f5cf2-cd39-11e5-bcee-0619f8945a4f </string>
+    <string name="com.pubnub.publishKey" translatable="false">pub-c-505aaa34-8517-422d-bb5d-9ae4ef3bc98f</string>
+    <string name="com.pubnub.secretKey" translatable="false">sec-c-N2JkNTIzMjAtYTIwOS00ODdkLThlNWYtMjc4MzBmMGNiOTY5</string>
+    <string name="com.pubnub.subscribeKey" translatable="false">sub-c-c51320ac-d0fc-11e5-a9b2-02ee2ddab7fe</string>
 
     <string name="location_title">Location data needed</string>
     <string name="location_message">You cannot proceed without enabling location</string>

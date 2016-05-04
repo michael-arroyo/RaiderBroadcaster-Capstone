@@ -38,6 +38,7 @@ public class BroadcasterService extends Service
         LocationListener {
     private Pubnub mPubNub;
     private String busName;
+    private String busType;
     private static final String CHANNEL = "source";
     private SharedPreferences sharedPrefs;
 
@@ -106,6 +107,7 @@ public class BroadcasterService extends Service
         // onStartCommand should only be called once
         if (!mAlreadyRunning) {
             busName = intent.getExtras().getString("busname");
+            busType = intent.getExtras().getString("bustype");
             mGoogleApiClient.connect();
 
             initializePubNub();
@@ -169,13 +171,6 @@ public class BroadcasterService extends Service
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
@@ -196,6 +191,7 @@ public class BroadcasterService extends Service
         JSONObject message = new JSONObject();
         try {
             message.put("busname", busName);
+            message.put("bustype", busType);
             message.put("lat", location.getLatitude());
             message.put("lon", location.getLongitude());
             message.put("time", System.currentTimeMillis());

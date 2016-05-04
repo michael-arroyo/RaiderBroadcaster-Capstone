@@ -11,6 +11,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
     public static final String NAME_KEY = "BUSNAME";
+    public static final String TYPE_KEY = "BUSTYPE";
 
     private StartFragment startFragment;
     private StopFragment stopFragment;
